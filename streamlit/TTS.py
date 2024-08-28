@@ -2,14 +2,6 @@ import requests
 import streamlit as st
 from streamlit_lottie import st_lottie
 
-
-def load_lottieurl(url):
-    r = requests.get(url)
-    if r.status_code != 200:
-        return None
-    return r.json()
-
-
 url = 'https://voice.lenovomm.com/lasf/cloudtts'
 headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36',

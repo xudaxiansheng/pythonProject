@@ -13,7 +13,7 @@ psw = st.text_input('password', '123')
 
 button = st.button('login')
 if button:
-    with st.spinner('loading....'):
+    with st.spinner('登录中......'):
         rel = login(name, psw)
         if rel:
             st.write('登录成功')

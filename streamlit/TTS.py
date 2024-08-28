@@ -27,4 +27,4 @@ if button:
     r = requests.post(url, headers=headers, data=data)
     with open('voice.mp3', 'wb') as f:
         f.write(r.content)
-st.audio('voice.mp3')
+    st.audio('voice.mp3')

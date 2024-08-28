@@ -10,10 +10,10 @@ headers = {
 }
 st.write('# 语音合成工具 1.0')
 text = st.text_area('>输入要合成的文字', '举例：我是一只小小小小鸟，想要飞飞飞飞飞飞的更高。')
-speed = st.number_input('设置播放的语速，在0~9之间，默认为5:', 0, 9, 5)
-volume = st.number_input('设置语音的音量，在0~9之间，默认为5:', 0, 9, 5)
-pitch = st.number_input('设置语音的音调，在0~9之间，默认为5中音调:', 0, 9, 5)
-speaker = st.radio('db4：女声 db2：男生;默认为：db4:', [':rainbow[db4]', 'db2'],captions=['女声','男声'])
+speed = st.number_input('设置播放的语速:', 0, 9, 5)
+volume = st.number_input('设置语音的音量:', 0, 9, 5)
+pitch = st.number_input('设置语音的音调:', 0, 9, 5)
+speaker = st.radio('设置语音角色', [':rainbow[db4]', 'db2'],captions=['女声','男声'])
 button = st.button('合成语音')
 
 data = {

@@ -8,7 +8,7 @@ headers = {
     'secretKey': 'C3BAC3A28F97B6E73840BE8F4DC8DB0F',
     'channel': 'cloudasr'
 }
-st.write('# 语音合成工具 1.0')
+st.write('# 语音合成 v1.1')
 text = st.text_area('>输入要合成的文字', '举例：我是一只小小小小鸟，想要飞飞飞飞飞飞的更高。')
 speed = st.number_input('设置播放的语速:', 0, 9, 5)
 volume = st.number_input('设置语音的音量:', 0, 9, 5)

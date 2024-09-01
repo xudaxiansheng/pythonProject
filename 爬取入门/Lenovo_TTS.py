@@ -33,8 +33,9 @@ data = {
     'speed':speed,
     'volume':volume,
     'pitch':pitch,
+    'audioType':'wav',
     'speaker':speaker
 }
 r = requests.post(url, headers=headers, data=data)
-with open('voice.mp3', 'wb') as f:
+with open('../streamlit/voice.wav', 'wb') as f:
     f.write(r.content)

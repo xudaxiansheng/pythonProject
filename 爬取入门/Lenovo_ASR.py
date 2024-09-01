@@ -1,33 +1,39 @@
-from idlelib.iomenu import encoding
-
-import requests
+import wave
+from tkinter.constants import PROJECTING
 from urllib.parse import urlencode
-import base64
+import requests
+import json
 
-from certifi import contents
+
+
 
 base_url = 'https://voice.lenovomm.com/lasf/cloudasr'
 headers = {
-    # 'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36',
-    'lenovokey':'LENOVO-VOICE-4a817cb58t970d468hc886a',
-    'secretkey':'C3BAC3A28F97B6E73840BE8F4DC8DB0F',
-    'channel':'cloudasr'
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36',
+    'lenovoKey': 'LENOVO-VOICE-4a817cb58t970d468hc886a',
+    'secretKey': 'C3BAC3A28F97B6E73840BE8F4DC8DB0F',
+    'channel': 'cloudasr'
 }
-with open('voice.mp3','rb') as f:
-     voice = f.read()
-# text = input('输入要合成的语音文字：')
-#      print(voice)
-parm = {
+with open('../streamlit/16k.pcm', 'rb') as f:
+    byte_vo = f.read()
+    byte_array =bytearray(byte_vo)
+
+data = {
     'scene': 'short',
-    'language':'chinese',
-    'sample':1,
-    'audioFormat':'speex_8000_16bit_sample',
-    'sessionid':1356663021692,
-    'packageid':1,
-    'over':1,
-    'voice-data':voice
+    'audioFormat': 'pcm_16000_16bit_sample',
+    'sessionid': 1356663021692,
+    'packageid': 1,
+    'over': 1,
+    'voice-data': byte_array
 }
-# url = base_url + '?' + urlencode(parm)
-r = requests.post(base_url,headers=headers,data=parm)
-# rel = r.json()
+# data_new = urlencode(data)
+# parmas = {
+#     'param-data': data_new,
+#     'voice-data': byte_array
+# }
+r= requests.post(base_url, headers=headers, data=data)
+code = r.status_code
+print(code)
+r = json.loads(r.text)
 print(r)
+print(r['allDur'])

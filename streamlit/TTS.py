@@ -1,5 +1,3 @@
-from zipfile import sizeFileHeader
-
 import requests
 import streamlit as st
 
@@ -11,11 +9,12 @@ headers = {
     'channel': 'cloudasr'
 }
 st.write('#### 语音合成 v1.1')
-text = st.text_area('>输入要合成的文字', '举例：我是一只小小小小鸟，想要飞飞飞飞飞飞的更高。',max_chars=5000,help='输入文字后，点击“合成语音“即可试听')
+text = st.text_area('>输入要合成的文字', '举例：我是一只小小小小鸟，想要飞飞飞飞飞飞的更高。', max_chars=5000,
+                    help='输入文字后，点击“合成语音“即可试听')
 speed = st.number_input('设置播放的语速:', 0, 9, 5)
 volume = st.number_input('设置语音的音量:', 0, 9, 5)
 pitch = st.number_input('设置语音的音调:', 0, 9, 5)
-speaker = st.radio('设置语音角色', [':rainbow[db4]', 'db2'],captions=['女声','男声'])
+speaker = st.radio('设置语音角色', [':rainbow[db4]', 'db2'], captions=['女声', '男声'])
 button = st.button('合成语音')
 
 data = {
@@ -32,5 +31,3 @@ if button:
         with open('voice.wav', 'wb') as f:
             f.write(r.content)
         st.audio('voice.wav')
-
-

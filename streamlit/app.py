@@ -1,22 +1,8 @@
+from my_package import ASR
 import streamlit as st
-import time
-
-# 登录页面练习
-
-def login(name, psw):
-    time.sleep(2)
-    return name == 'xu' and psw == '123'
 
 
-name = st.text_input('name', 'xu')
-psw = st.text_input('password', '123')
-
-button = st.button('login')
-if button:
-    with st.spinner('登录中......'):
-        rel = login(name, psw)
-        if rel:
-            st.write('登录成功')
-        else:
-            st.write('失败')
-
+path = "../streamlit/16k.pcm"  # 请将您的语音文件路径改为本地路径
+content = ASR.main(path)
+print(content)
+st.write("语音识别结果：", content)

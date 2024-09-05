@@ -58,6 +58,16 @@ def get_access_token():
     params = {"grant_type": "client_credentials", "client_id": API_KEY, "client_secret": SECRET_KEY}
     return str(requests.post(url, params=params).json().get("access_token"))
 
+st.write('hello world')
+
+file = st.file_uploader("上传语音文件", type=["wav", "pcm"])
+if file is not None:
+    text = main(file)
+    st.write(f"识别结果: \n```{text}```")
+# path = "../streamlit/16k.pcm"  # 请将您的语音文件路径改为本地路径
+# content = main(path)
+# print(content)
+# st.write("语音识别结果：", content)
 
 if __name__ == '__main__':
     path = "../streamlit/16k.pcm"  # 请将您的语音文件路径改为本地路径

@@ -1,5 +1,5 @@
 import streamlit as st
-
+# BMI计算
 st.write('### BMI v1.0')
 height = int(st.number_input('请输入你的身高(cm)', 100, 220, 187))
 weight = int(st.number_input('请输入你的体重(kg)', 30, 260, 84))

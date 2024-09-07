@@ -26,4 +26,4 @@ if button:
         'BMI范围': ['<= 18.40', '18.40~23.99', '24~27.99', '>=28']
     }
     df = pd.DataFrame(data)
-    st.dataframe(df)
+    st.dataframe(df,width=1000,hide_index=True)

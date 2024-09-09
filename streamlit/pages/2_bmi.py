@@ -1,7 +1,6 @@
-import json
-
 import streamlit as st
 import pandas as pd
+import numpy as np
 import time
 
 # BMI计算
@@ -12,8 +11,8 @@ weight = float(
 height /= 100
 BMI = round(weight / (height ** 2), 2)
 button = st.button('BMI计算')
-st.caption('BMI计算公式：')  # 小号字体
-st.code('weight / (height ** 2) # 体重(kg)/身高(米)²', 'python')
+st.caption('BMI计算公式')  # 小号字体
+st.code('weight/(height**2)# 体重(kg)/身高(米)²', 'python')
 if button:
     st.caption(f'您的BMI是{BMI}')
     if BMI <= 18.40:
@@ -65,5 +64,4 @@ if button:
         # 'classification': data_classification
     }
     df1 = pd.DataFrame(data_cla)
-    st.caption('BMI数据记录表')  # 小号字体
     st.dataframe(df1, width=1000, hide_index=True)
